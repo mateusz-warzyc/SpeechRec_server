@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import pl.mateuszwarzyc.sr.persistence.entities.IsAlive;
 import pl.mateuszwarzyc.sr.services.IIsAliveService;
+import pl.mateuszwarzyc.sr.shared.dto.IsAliveDTO;
 
 import java.util.List;
 
@@ -24,8 +25,9 @@ public class IsAliveController {
     private IIsAliveService isAliveService;
 
     @RequestMapping(method = RequestMethod.GET)
-    public List<IsAlive> getAllIsAliveEntities() {
+    public List<IsAliveDTO> getAllIsAliveEntities() {
         LOGGER.debug("Request for all isAlive entries received..");
-        return isAliveService.getAllIsAliveEntries();
+        List<IsAliveDTO> dtos = isAliveService.getAllIsAliveEntries();
+        return dtos;
     }
 }

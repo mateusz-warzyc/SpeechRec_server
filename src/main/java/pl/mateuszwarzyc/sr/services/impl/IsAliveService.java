@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import pl.mateuszwarzyc.sr.persistence.entities.IsAlive;
 import pl.mateuszwarzyc.sr.persistence.repositories.IsAliveRepository;
 import pl.mateuszwarzyc.sr.services.IIsAliveService;
+import pl.mateuszwarzyc.sr.shared.dto.IsAliveDTO;
+import pl.mateuszwarzyc.sr.shared.mappers.IsAliveMapper;
 
 import javax.transaction.Transactional;
 import java.util.Calendar;
@@ -23,12 +25,15 @@ public class IsAliveService implements IIsAliveService {
     @Autowired
     private IsAliveRepository repo;
 
+    @Autowired
+    private IsAliveMapper isAliveMapper;
+
     @Override
     @Transactional
-    public List<IsAlive> getAllIsAliveEntries() {
+    public List<IsAliveDTO> getAllIsAliveEntries() {
         LOGGER.debug("Service for fetching all entries for isAlive called..");
         createNewIsAliveCheck();
-        return repo.findAll();
+        return isAliveMapper.isAliveListToIsAliveDTOList(repo.findAll());
     }
 
     @Override

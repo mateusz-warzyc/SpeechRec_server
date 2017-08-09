@@ -1,6 +1,6 @@
 package pl.mateuszwarzyc.sr.services;
 
-import pl.mateuszwarzyc.sr.persistence.entities.IsAlive;
+import pl.mateuszwarzyc.sr.shared.dto.IsAliveDTO;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ import java.util.List;
  */
 public interface IIsAliveService {
 
-    List<IsAlive> getAllIsAliveEntries();
+    List<IsAliveDTO> getAllIsAliveEntries();
 
     void createNewIsAliveCheck();
 }
