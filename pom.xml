@@ -23,6 +23,7 @@
         <java.version>1.8</java.version>
         <version.slf4j>1.7.24</version.slf4j>
         <org.mapstruct.version>1.1.0.Final</org.mapstruct.version>
+        <jjwt.version>0.6.0</jjwt.version>
     </properties>
 
     <dependencies>
@@ -56,6 +57,18 @@
         </dependency>
         <!--END PERSISTENCE-->
 
+        <!--SECURITY-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+            <version>${jjwt.version}</version>
+        </dependency>
+        <!--END SECURITY-->
+
         <!--TESTS-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -75,8 +88,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.5.1</version>
                 <configuration>
-                    <source>1.6</source> <!-- or higher, depending on your project -->
-                    <target>1.6</target> <!-- or higher, depending on your project -->
+                    <source>1.8</source>
+                    <target>1.8</target>
                     <annotationProcessorPaths>
                         <path>
                             <groupId>org.mapstruct</groupId>
