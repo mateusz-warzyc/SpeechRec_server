@@ -48,6 +48,7 @@ public class UserService implements IUserService {
         userToSave.setUsername(user.getEmail());
         userToSave.setPassword(encoder.encode(user.getPassword()));
         userToSave.setRoles(roles);
+        role.setUser(userToSave);
         User savedUser = this.userRepository.saveAndFlush(userToSave);
         LOGGER.debug("New user with username {} and roles: {} saved..",savedUser.getUsername(), savedUser.getRoles());
     }

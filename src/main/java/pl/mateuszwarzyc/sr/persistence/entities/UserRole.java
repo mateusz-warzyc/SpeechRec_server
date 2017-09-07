@@ -23,6 +23,10 @@ public class UserRole implements Serializable {
     @Column(name = "ROLE")
     private Role role;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "USER_ID")
+    private User user;
+
     public UserRole() {}
 
     public UserRole(Role role) {
@@ -45,6 +49,14 @@ public class UserRole implements Serializable {
         this.role = role;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -56,6 +68,7 @@ public class UserRole implements Serializable {
         return new EqualsBuilder()
                 .append(id, userRole.id)
                 .append(role, userRole.role)
+                .append(user, userRole.user)
                 .isEquals();
     }
 
@@ -64,14 +77,7 @@ public class UserRole implements Serializable {
         return new HashCodeBuilder(17, 37)
                 .append(id)
                 .append(role)
+                .append(user)
                 .toHashCode();
-    }
-
-    @Override
-    public String toString() {
-        return "UserRole{" +
-                "id=" + id +
-                ", role=" + role +
-                '}';
     }
 }
