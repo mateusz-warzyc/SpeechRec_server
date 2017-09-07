@@ -1,5 +1,8 @@
 package pl.mateuszwarzyc.sr.persistence.entities;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -9,33 +12,66 @@ import java.io.Serializable;
 @Entity
 @Table(name = "auth_user_role")
 public class UserRole implements Serializable {
-    @Embeddable
-    public static class Id implements Serializable {
-        private static final long serialVersionUID = 9201447050403352411L;
+    private static final long serialVersionUID = 1332125444030598783L;
 
-        @Column(name = "auth_user_id")
-        protected Long userId;
-
-        @Enumerated(EnumType.STRING)
-        protected Role role;
-
-        public Id() {}
-
-        public Id(Long userId, Role role) {
-            this.userId = userId;
-            this.role = role;
-        }
-    }
-
-    @EmbeddedId
-    Id id = new Id();
+    @Id
+    @Column(name = "ROLE_ID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "ROLE", insertable = false, updatable = false)
-    protected Role role;
+    @Column(name = "ROLE")
+    private Role role;
+
+    public UserRole() {}
+
+    public UserRole(Role role) {
+        this.role = role;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public Role getRole() {
         return role;
     }
 
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+
+        if (o == null || getClass() != o.getClass()) return false;
+
+        UserRole userRole = (UserRole) o;
+
+        return new EqualsBuilder()
+                .append(id, userRole.id)
+                .append(role, userRole.role)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder(17, 37)
+                .append(id)
+                .append(role)
+                .toHashCode();
+    }
+
+    @Override
+    public String toString() {
+        return "UserRole{" +
+                "id=" + id +
+                ", role=" + role +
+                '}';
+    }
 }

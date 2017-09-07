@@ -5,7 +5,10 @@ package pl.mateuszwarzyc.sr.persistence.entities;
  */
 public enum Role {
 
-    ADMIN, MEMBER, PREMIUM_MEMBER;
+    ADMIN,
+    MEMBER,
+    PREMIUM_MEMBER,
+    USER;
 
     public String authority() {
         return "ROLE_" + this.name();

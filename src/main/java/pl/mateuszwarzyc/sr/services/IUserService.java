@@ -1,6 +1,7 @@
 package pl.mateuszwarzyc.sr.services;
 
 import pl.mateuszwarzyc.sr.persistence.entities.User;
+import pl.mateuszwarzyc.sr.shared.dto.RegisterUserDTO;
 
 import java.util.Optional;
 
@@ -9,5 +10,7 @@ import java.util.Optional;
  */
 public interface IUserService {
 
-    public Optional<User> getByUsername(String username);
+    Optional<User> getByUsername(String username);
+
+    void createUser(RegisterUserDTO user);
 }
