@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import pl.mateuszwarzyc.sr.security.endpoint.RegisterUserEndpoint;
+import pl.mateuszwarzyc.sr.security.endpoint.UserEndpoint;
 
 import javax.validation.ConstraintViolationException;
 import java.text.MessageFormat;
@@ -18,9 +18,10 @@ import java.util.stream.Collectors;
 /**
  * Created by mateusz-warzyc.
  */
-@ControllerAdvice(basePackageClasses = RegisterUserEndpoint.class)
-public class RegisterUserEndpointErrorHandler {
-    private static final Logger LOGGER = LoggerFactory.getLogger(RegisterUserEndpointErrorHandler.class);
+@ControllerAdvice(basePackageClasses = UserEndpoint.class)
+public class UserEndpointErrorHandler {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(UserEndpointErrorHandler.class);
     private static final String VALIDATION_MESSAGE_TEMPLATE = "Error field: {0} - message: {1}";
     private static final String UNEXPECTED_ERROR_MESSAGE_TEMPLATE = "Unexpected error: {0}";
 

@@ -16,12 +16,12 @@ import javax.validation.Valid;
  */
 @Validated
 @RestController
-public class RegisterUserEndpoint {
-    private static final Logger LOGGER = LoggerFactory.getLogger(RegisterUserEndpoint.class);
+public class UserEndpoint {
+    private static final Logger LOGGER = LoggerFactory.getLogger(UserEndpoint.class);
     private final IUserService userService;
 
     @Autowired
-    public RegisterUserEndpoint(IUserService userService) {
+    public UserEndpoint(IUserService userService) {
         this.userService = userService;
     }
 

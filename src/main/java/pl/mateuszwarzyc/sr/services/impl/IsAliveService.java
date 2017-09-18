@@ -21,12 +21,14 @@ import java.util.List;
 public class IsAliveService implements IIsAliveService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(IsAliveService.class);
+    private final IsAliveRepository repo;
+    private final IsAliveMapper isAliveMapper;
 
     @Autowired
-    private IsAliveRepository repo;
-
-    @Autowired
-    private IsAliveMapper isAliveMapper;
+    public IsAliveService(final IsAliveRepository repository, final IsAliveMapper mapper) {
+        this.repo = repository;
+        this.isAliveMapper = mapper;
+    }
 
     @Override
     @Transactional

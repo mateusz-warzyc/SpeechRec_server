@@ -23,7 +23,6 @@ import java.util.Optional;
 @Service
 public class UserService implements IUserService {
     private static final Logger LOGGER = LoggerFactory.getLogger(UserService.class);
-
     private final IUserRepository userRepository;
     private final BCryptPasswordEncoder encoder;
 
